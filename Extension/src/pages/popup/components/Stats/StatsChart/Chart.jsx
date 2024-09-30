@@ -172,7 +172,7 @@ export const Chart = ({ stats, range, type }) => {
         c3.generate({
             bindTo: '#chart',
             size: {
-                height: 223,
+                height: 218,
             },
             data: {
                 columns: [
