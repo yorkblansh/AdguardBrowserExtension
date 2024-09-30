@@ -59,16 +59,18 @@ export const Tabs = observer(() => {
             })}
         >
             <div className="tabs__panel">
-                <Tab
-                    title={translator.getMessage('popup_tab_actions')}
-                    active={viewState === ViewState.Actions}
-                    onClick={handleTabClick(ViewState.Actions)}
-                />
-                <Tab
-                    title={translator.getMessage('popup_tab_statistics')}
-                    active={viewState === ViewState.Stats}
-                    onClick={handleTabClick(ViewState.Stats)}
-                />
+                <div className="tabs__panel-wrapper">
+                    <Tab
+                        title={translator.getMessage('popup_tab_actions')}
+                        active={viewState === ViewState.Actions}
+                        onClick={handleTabClick(ViewState.Actions)}
+                    />
+                    <Tab
+                        title={translator.getMessage('popup_tab_statistics')}
+                        active={viewState === ViewState.Stats}
+                        onClick={handleTabClick(ViewState.Stats)}
+                    />
+                </div>
             </div>
             <div
                 className={tabContentClassName}
