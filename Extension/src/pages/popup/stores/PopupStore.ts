@@ -491,7 +491,7 @@ class PopupStore {
             .slice()
             .map((category) => {
                 const { categoryId, categoryName } = category;
-                const blocked = statsDataForCurrentRange[categoryId];
+                const blocked = statsDataForCurrentRange[categoryId]!;
                 return {
                     categoryId,
                     blocked,
