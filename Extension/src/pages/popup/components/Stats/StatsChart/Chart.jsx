@@ -22,7 +22,7 @@ import c3 from 'c3';
 import 'c3/c3.css';
 
 import { reactTranslator } from '../../../../../common/translators/reactTranslator';
-import { TIME_RANGES } from '../../../constants';
+import { TimeRange } from '../../../constants';
 
 import './chart.pcss';
 
@@ -62,22 +62,22 @@ const monthsAsString = (monthIndex) => {
 const selectRequestsStatsData = (stats, range, type) => {
     const result = [];
     switch (range) {
-        case TIME_RANGES.DAY:
+        case TimeRange.DAY:
             stats.today.forEach((d) => {
                 result.push(d[type]);
             });
             break;
-        case TIME_RANGES.WEEK:
+        case TimeRange.WEEK:
             stats.lastWeek.forEach((d) => {
                 result.push(d[type]);
             });
             break;
-        case TIME_RANGES.MONTH:
+        case TimeRange.MONTH:
             stats.lastMonth.forEach((d) => {
                 result.push(d[type]);
             });
             break;
-        case TIME_RANGES.YEAR:
+        case TimeRange.YEAR:
             stats.lastYear.forEach((d) => {
                 result.push(d[type]);
             });
@@ -103,7 +103,7 @@ const getCategoriesLines = (statsData, range) => {
     const MONTHS_PER_YEAR = 12;
 
     switch (range) {
-        case TIME_RANGES.DAY:
+        case TimeRange.DAY:
             for (let i = 1; i <= HOURS_PER_DAY; i += 1) {
                 if (i % 3 === 0) {
                     const hour = (i + now.getHours()) % HOURS_PER_DAY;
@@ -116,7 +116,7 @@ const getCategoriesLines = (statsData, range) => {
                 }
             }
             break;
-        case TIME_RANGES.WEEK:
+        case TimeRange.WEEK:
             for (let i = 0; i < DAYS_PER_WEEK; i += 1) {
                 categories.push(dayOfWeekAsString((day + i) % DAYS_PER_WEEK));
                 lines.push({
@@ -124,7 +124,7 @@ const getCategoriesLines = (statsData, range) => {
                 });
             }
             break;
-        case TIME_RANGES.MONTH:
+        case TimeRange.MONTH:
             for (let i = 0; i <= DAYS_PER_MONTH; i += 1) {
                 if (i % 3 === 0) {
                     const c = ((i + now.getDate()) % lastDayOfPrevMonth) + 1;
@@ -137,7 +137,7 @@ const getCategoriesLines = (statsData, range) => {
                 }
             }
             break;
-        case TIME_RANGES.YEAR:
+        case TimeRange.YEAR:
             for (let i = 0; i <= MONTHS_PER_YEAR; i += 1) {
                 categories.push(monthsAsString((month + i) % MONTHS_PER_YEAR));
                 categories = categories.slice(-statsData.length);

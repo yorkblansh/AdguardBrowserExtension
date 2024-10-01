@@ -35,7 +35,7 @@ import type { PageStatsDataItem } from '../../../background/schema';
 import { messenger } from '../../services/messenger';
 import {
     SpecificPopupState,
-    TIME_RANGES,
+    TimeRange,
     ViewState,
 } from '../constants';
 import { MessageType } from '../../../common/messages';
@@ -121,7 +121,7 @@ class PopupStore {
     stats: GetStatisticsDataResponse | null = null;
 
     @observable
-    selectedTimeRange = TIME_RANGES.WEEK;
+    selectedTimeRange = TimeRange.WEEK;
 
     @observable
     selectedBlockedType = this.TOTAL_BLOCKED_GROUP_ID;
@@ -428,12 +428,12 @@ class PopupStore {
 
     getDataByRange = (stats: GetStatisticsDataResponse, range: string): PageStatsDataItem | undefined => {
         switch (range) {
-            case TIME_RANGES.DAY:
+            case TimeRange.DAY:
                 if (!stats.lastMonth[stats.lastMonth.length - 1]) {
                     return undefined;
                 }
                 return stats.lastMonth[stats.lastMonth.length - 1];
-            case TIME_RANGES.WEEK: {
+            case TimeRange.WEEK: {
                 const result: PageStatsDataItem = {};
                 for (let i = 0; i < stats.lastWeek.length; i += 1) {
                     const day = stats.lastWeek[i];
@@ -450,9 +450,9 @@ class PopupStore {
                 }
                 return result;
             }
-            case TIME_RANGES.MONTH:
+            case TimeRange.MONTH:
                 return stats.lastYear[stats.lastYear.length - 1];
-            case TIME_RANGES.YEAR: {
+            case TimeRange.YEAR: {
                 const result: PageStatsDataItem = {};
                 for (let i = 0; i < stats.lastYear.length; i += 1) {
                     const month = stats.lastYear[i];
@@ -510,7 +510,7 @@ class PopupStore {
     };
 
     @action
-    setSelectedTimeRange = (value: string) => {
+    setSelectedTimeRange = (value: TimeRange) => {
         this.selectedTimeRange = value;
     };
 
