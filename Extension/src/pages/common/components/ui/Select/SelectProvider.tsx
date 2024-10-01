@@ -37,7 +37,7 @@ export const SelectContext = createContext<ISelectContext>({
 });
 
 export interface SelectProviderProps {
-    currentSelect: null | string
+    currentSelect?: null | string
     children?: React.ReactNode
 }
 
