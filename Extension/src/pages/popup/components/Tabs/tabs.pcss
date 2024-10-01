@@ -51,9 +51,11 @@
         text-align: center;
         transition: var(--t3) color, var(--t3) background-color;
         color: var(--text-description-description-default);
-        flex: 1 0 0;
+        flex: 0 0 calc(50% - 4px);
         border-radius: 8px;
         background-color: transparent;
+        text-overflow: ellipsis;
+        overflow: hidden;
 
         &:hover {
             color: var(--text-main-text-main-default);
