@@ -156,7 +156,12 @@ const getCategoriesLines = (statsData, range) => {
     };
 };
 
-export const Chart = ({ stats, range, type }) => {
+export const Chart = ({
+    stats,
+    range,
+    type,
+    small,
+}) => {
     useEffect(() => {
         const statsData = selectRequestsStatsData(stats, range, type);
         const categoriesLines = getCategoriesLines(statsData, range);
@@ -172,7 +177,7 @@ export const Chart = ({ stats, range, type }) => {
         c3.generate({
             bindTo: '#chart',
             size: {
-                height: 218,
+                height: small ? 178 : 218,
             },
             data: {
                 columns: [
@@ -249,7 +254,7 @@ export const Chart = ({ stats, range, type }) => {
                 this.svg[0][0].getElementsByTagName('defs')[0].innerHTML += grad1;
             },
         });
-    }, [range, type, stats]);
+    }, [range, type, stats, small]);
 
     return <div className="chart" id="chart" />;
 };

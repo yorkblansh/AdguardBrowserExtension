@@ -19,11 +19,18 @@
         align-items: center;
 
         &--stats {
+            display: block;
+            padding: 0;
             max-height: 176px;
             min-height: 176px;
             overflow-y: scroll;
             scrollbar-width: thin;
             scrollbar-color: var(--fills-loaders-background-default) var(--fills-backgrounds-page-background-default);
+
+            &.tabs__content--has-user-rules {
+                max-height: 216px;
+                min-height: 216px;
+            }
         }
 
         &::-webkit-scrollbar {
