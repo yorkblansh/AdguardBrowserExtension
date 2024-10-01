@@ -44,7 +44,7 @@ export const Tabs = observer(() => {
 
     const tabContentClassName = cn('tabs__content', {
         'tabs__content--stats': viewState === ViewState.Stats,
-        'tabs__content--has-user-rules': !store.hasUserRulesToReset,
+        'tabs__content--has-user-rules': store.hasUserRulesToReset,
     });
 
     const TabContent = contentMap[viewState];
